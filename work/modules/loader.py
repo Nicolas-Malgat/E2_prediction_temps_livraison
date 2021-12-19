@@ -8,17 +8,17 @@ import tarfile
 
 class Loader:
 
-    def __init__(self, remote, target_folder, extraction_target=None, skip_unzip=False):
+    def __init__(self, url, target_folder, extraction_target=None, skip_unzip=False):
         """
             zip_folder_path doit terminer par un separateur ('/' ou '\')
         """
-        self.remote = remote
+        self.url = url
         self.folder_path = target_folder
         
         # recuperation du nom du zip
-        self.file = self.folder_path + remote.split('/')[-1]
-
+        self.file = self.folder_path + url.split('/')[-1]
         self.extraction_target = extraction_target
+
         self.skip_unzip = skip_unzip
 
     def ensure_data_loaded(self):
@@ -42,7 +42,7 @@ class Loader:
         if not Loader.__ask("Dé-zipper le fichier [y]/n ? "):
             return
 
-        self.__extract_data()
+        Loader.extract_data(self.extraction_target, self.file)
 
         print('\nLes fichiers sont correctement extractés')
 
@@ -75,7 +75,7 @@ class Loader:
         try:
             print('Downloading data')
             with open(self.file, "wb") as f:
-                response = requests.get(self.remote, stream=True)
+                response = requests.get(self.url, stream=True)
                 total_length = response.headers.get('content-length')
 
                 if total_length is None: # no content length header
@@ -94,21 +94,23 @@ class Loader:
             os.remove(self.file)
             raise Exception(e)
 
-
-    def __extract_data(self):
+    @staticmethod
+    def extract_data(extraction_target, file):
         '''
         Extract the zip file to the hard disk
         '''
-        Loader.__test_folder(self.extraction_target)
+        Loader.__test_folder(extraction_target)
 
         # print(self.file)
         
-        if self.file.endswith(".zip"):
-            with zipfile.ZipFile(self.file, 'r') as compressed_file:
-                compressed_file.extractall(self.extraction_target)
-        elif self.file.endswith(".tar.gz"):
-            with tarfile.TarFile.open(self.file, 'r:gz') as compressed_file:
-                compressed_file.extractall(self.extraction_target)
+        if file.endswith(".zip"):
+            with zipfile.ZipFile(file, 'r') as compressed_file:
+                compressed_file.extractall(extraction_target)
+        elif file.endswith(".tar.gz"):
+            with tarfile.TarFile.open(file, 'r:gz') as compressed_file:
+                compressed_file.extractall(extraction_target)
+
+        print('Extracted', len(os.listdir(extraction_target)), "files in '" + extraction_target + "'")
 
 if __name__ == "__main__":
     loader = Loader(
