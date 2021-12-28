@@ -19,7 +19,6 @@ Il existe de nombreuses informations pour chaque commande, notamment la date d'a
 Liste des tables utilisées:
 
 - olist_customers_dataset.csv
-- olist_geolocation_dataset.csv
 - olist_orders_dataset.csv
 - olist_order_items_dataset.csv
 - olist_products_dataset.csv
@@ -30,7 +29,7 @@ Liste des tables utilisées:
 <span style="color:#F99">
 Liste des tables inutilisées:
 
-- olist_products_dataset.csv
+- olist_geolocation_dataset.csv
 - olist_order_reviews_dataset.csv
 - olist_order_payments_dataset.csv
 - product_category_name_translation.csv
@@ -38,7 +37,7 @@ Liste des tables inutilisées:
 </span>
 
 
-|![Schéma des tables du dataset](documentation/data_schema.png)|
+|![Schéma des tables du dataset](documentation/data_schema_essential.png)|
 |:--:| 
 |*Schéma des tables du dataset*|
 
