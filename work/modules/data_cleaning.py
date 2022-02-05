@@ -13,7 +13,19 @@ def apply_zscore(df, columns):
 
     return df[filtre]
 
-""" Pour un pd.Dataframe contenant les colonnes longeur, largeur et hauteur
+""" Pour deux Series de type datetime64 respectivement le depart et la fin, 
+    retourne la difference en jour 
+"""
+def get_time_gap(start: pd.Series, end: pd.Series):
+    df = pd.DataFrame({'start': start,'end': end})
+    return pd.Series(
+        [
+            (end - start).total_seconds()/60/60/24
+            for start, end in df.itertuples(index=False)
+        ]
+    )
+
+""" Pour un pd.Dataframe contenant les colonnes longeur, largeur et hauteur d'un colis
     renvoie un pd.Series avec autant de lignes contemant la somme des trois colonnes ci-dessus
 """
 def get_volume(df):
