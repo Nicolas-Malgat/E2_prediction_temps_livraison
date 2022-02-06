@@ -16,10 +16,6 @@ app.mount(
     name="static",
 )
 
-# @app.get('/')
-# def read_form():
-#     return 'hello world'
-
 @app.get('/favicon.ico')
 async def favicon():
     return FileResponse(favicon_path)
@@ -60,5 +56,5 @@ def form_post(
     form_data = [distance, estimated_delay, price, freight_value, weight, volume] + OHE
 
     result = predict_delivery_time(form_data)
-    result = round(result, 1)
+    result = str(round(result, 1)) + ' jours avant livraison'
     return templates.TemplateResponse('form.html', context={'request': request, 'result': result})
