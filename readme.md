@@ -23,13 +23,13 @@ Liste des tables utilisées:
 - olist_order_items_dataset.csv
 - olist_products_dataset.csv
 - olist_sellers_dataset.csv
+- olist_geolocation_dataset.csv
 
 </span>
 
 <span style="color:#F99">
 Liste des tables inutilisées:
 
-- olist_geolocation_dataset.csv
 - olist_order_reviews_dataset.csv
 - olist_order_payments_dataset.csv
 - product_category_name_translation.csv
@@ -43,8 +43,9 @@ Liste des tables inutilisées:
 
 ## Les améliorations que je souhaite apporter:
 
-- Calcul du temps de trajet (distance de manhattan) à l'aide d'une API
+- Calcul du temps de trajet réel par la route
 - Ajout de la distance avec la grande ville la plus proche
+- La comparaison avec d'autres modèles de regression
 
 ## Source
 
