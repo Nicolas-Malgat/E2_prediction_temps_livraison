@@ -1,0 +1,1 @@
+conda activate E2 & uvicorn main:app --reload

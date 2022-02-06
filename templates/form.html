@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Livraison</title>
+    <link href="{{ url_for('static', path='/css/main.css') }}" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <h1>
+            Estimation du temps de livraison d'une commande
+        </h1>
+        <form method="post">
+            <table>
+                <div class="rendered-form">
+                    <tr>
+                        <div class="formbuilder-number form-group field-distance">
+                            <td>
+                                <label for="distance" class="formbuilder-number-label">Distance avec le vendeur en mètres
+                                    <span class="formbuilder-required">*</span>
+                                </label>
+                            </td>
+                            <td>
+                                <input type="number" class="form-control" name="distance" access="false" value="2000"
+                                    min="1000" max="5000" id="distance" required="required" aria-required="true">
+                            </td>
+                        </div>
+                    </tr>
+                    <tr>
+                        <div class="formbuilder-number form-group field-estimated_delay">
+                            <td>
+                                <label for="estimated_delay" class="formbuilder-number-label">Délai de livraison estimé en jours
+                                    <span class="formbuilder-required">*</span>
+                                </label>
+                            </td>
+                            <td>
+                                <input type="number" class="form-control" name="estimated_delay" access="false"
+                                    value="10" min="2" max="50" step="1" id="estimated_delay" required="required"
+                                    aria-required="true">
+                            </td>
+                        </div>
+                    </tr>
+                    <tr>
+                        <div class="formbuilder-number form-group field-price">
+                            <td>
+                                <label for="price" class="formbuilder-number-label">Prix de la commande
+                                    <span class="formbuilder-required">*
+                                    </span>
+                                </label>
+                            </td>
+                            <td>
+                                <input type="number" class="form-control" name="price" access="false" value="50" min="1"
+                                    max="700" step="1" id="price" required="required" aria-required="true">
+                            </td>
+                        </div>
+                    </tr>
+                    <tr>
+                        <div class="formbuilder-number form-group field-freight_value">
+                            <td>
+                                <label for="freight_value" class="formbuilder-number-label">Frais de port
+                                    <span class="formbuilder-required">*</span>
+                                </label>
+                            </td>
+                            <td>
+                                <input type="number" class="form-control" name="freight_value" access="false" value="5"
+                                    min="0" max="70" step="1" id="freight_value" required="required"
+                                    aria-required="true">
+                            </td>
+                        </div>
+                    </tr>
+                    <tr>
+                        <div class="formbuilder-number form-group field-weight">
+                            <td>
+                                <label for="weight" class="formbuilder-number-label">Poids de la commande en gramme
+                                    <span class="formbuilder-required">*</span>
+                                </label>
+                            </td>
+                            <td>
+                                <input type="number" class="form-control" name="weight" access="false" value="3000"
+                                    min="1" max="150000" id="weight" required="required" aria-required="true">
+                            </td>
+                        </div>
+                    </tr>
+                    <tr>
+                        <div class="formbuilder-number form-group field-volume">
+                            <td>
+                                <label for="volume" class="formbuilder-number-label">Volume de la commande en cm3
+                                    <span class="formbuilder-required">*</span>
+                                </label>
+                            </td>
+                            <td>
+                                <input type="number" class="form-control" name="volume" access="false" value="1000"
+                                    min="150" max="900000" id="volume" required="required" aria-required="true">
+                            </td>
+                        </div>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>
+                            <hr>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="formbuilder-checkbox-group form-group field-products">
+                                <label for="products" class="formbuilder-checkbox-group-label">Categorie de produit<span
+                                        class="formbuilder-required">*</span>
+                                </label>
+                        </td>
+                        <td>
+                            <div class="checkbox-group">
+                                <div class="formbuilder-checkbox-inline">
+                                    <input name="products" access="false" id="products-0" aria-required="true"
+                                        value="ferramentas_jardim" type="checkbox">
+                                    <label for="products-0">ferramentas_jardim</label>
+                                </div>
+                                <div class="formbuilder-checkbox-inline">
+                                    <input name="products" access="false" id="products-1" aria-required="true"
+                                        value="utilidades_domesticas" type="checkbox">
+                                    <label for="products-1">utilidades_domesticas</label>
+                                </div>
+                                <div class="formbuilder-checkbox-inline">
+                                    <input name="products" access="false" id="products-2" aria-required="true"
+                                        value="moveis_escritorio" type="checkbox">
+                                    <label for="products-2">moveis_escritorio</label>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>
+                            <hr>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="formbuilder-radio-group form-group field-day">
+                                <label for="day" class="formbuilder-radio-group-label">Jour de la commande<span
+                                        class="formbuilder-required">*</span></label>
+                        </td>
+                        <td>
+                            <div class="radio-group">
+                                <div class="formbuilder-radio">
+                                    <input name="day" access="false" id="day-0" required="required" aria-required="true"
+                                        value="Other" type="radio" checked="checked">
+                                    <label for="day-0">Autre</label>
+                                </div>
+                                <div class="formbuilder-radio">
+                                    <input name="day" access="false" id="day-2" required="required" aria-required="true"
+                                        value="Monday" type="radio">
+                                    <label for="day-2">Lundi</label>
+                                </div>
+                                <div class="formbuilder-radio">
+                                    <input name="day" access="false" id="day-1" required="required" aria-required="true"
+                                        value="Friday" type="radio">
+                                    <label for="day-1">Vendredi</label>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>
+                            <hr>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="formbuilder-radio-group form-group field-month">
+                                <label for="month" class="formbuilder-radio-group-label">Mois de la commande<span
+                                        class="formbuilder-required">*</span>
+                                </label>
+                        </td>
+                        <td>
+                            <div class="radio-group">
+                                <div class="formbuilder-radio">
+                                    <input name="month" access="false" id="month-0" required="required"
+                                        aria-required="true" value="Other" type="radio" checked="checked">
+                                    <label for="month-0">Autre</label>
+                                </div>
+                                <div class="formbuilder-radio">
+                                    <input name="month" access="false" id="month-1" required="required"
+                                        aria-required="true" value="January" type="radio">
+                                    <label for="month-1">Janvier</label>
+                                </div>
+                                <div class="formbuilder-radio">
+                                    <input name="month" access="false" id="month-2" required="required"
+                                        aria-required="true" value="February" type="radio">
+                                    <label for="month-2">Fevrier</label>
+                                </div>
+                                <div class="formbuilder-radio">
+                                    <input name="month" access="false" id="month-3" required="required"
+                                        aria-required="true" value="March" type="radio">
+                                    <label for="month-3">Mars</label>
+                                </div>
+                                <div class="formbuilder-radio">
+                                    <input name="month" access="false" id="month-4" required="required"
+                                        aria-required="true" value="May" type="radio">
+                                    <label for="month-4">Mai</label>
+                                </div>
+                                <div class="formbuilder-radio">
+                                    <input name="month" access="false" id="month-5" required="required"
+                                        aria-required="true" value="June" type="radio">
+                                    <label for="month-5">Juin</label>
+                                </div>
+                                <div class="formbuilder-radio">
+                                    <input name="month" access="false" id="month-6" required="required"
+                                        aria-required="true" value="July" type="radio">
+                                    <label for="month-6">Juillet</label>
+                                </div>
+                                <div class="formbuilder-radio">
+                                    <input name="month" access="false" id="month-7" required="required"
+                                        aria-required="true" value="August" type="radio">
+                                    <label for="month-7">Aout</label>
+                                </div>
+                                <div class="formbuilder-radio">
+                                    <input name="month" access="false" id="month-8" required="required"
+                                        aria-required="true" value="December" type="radio">
+                                    <label for="month-8">Decembre</label>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </div>
+            </table>
+            <input type="submit">
+        </form>
+
+        <p>Resultat: {{ result }}</p>
+    </div>
+</body>
+
+</html>
