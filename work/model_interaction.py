@@ -3,10 +3,10 @@ from pathlib import Path
 import pandas as pd
 import sqlite3
 
-def predict_delivery_time(form_data: list, database_path='../datas/CLEAN/E2/', pickle_folder='work/pickle/'):
-    # Recuperation du nommage des colonnes
+def predict_delivery_time(form_data: list, database_path='work/sqlite/', pickle_folder='work/pickle/'):
 
-    con = sqlite3.connect(database_path + 'E2.db')
+    # Recuperation du nommage des colonnes
+    con = sqlite3.connect(database_path + 'model_interaction.db')
     X = pd.read_sql('select * from preprocessor_input LIMIT 0', con, index_col='index')
     con.close()
 
@@ -34,7 +34,7 @@ def predict_delivery_time(form_data: list, database_path='../datas/CLEAN/E2/', p
     y_pred = model.predict(form_data)[0]
     form_data.insert(0, 'y_pred', y_pred)
 
-    con = sqlite3.connect(database_path + 'E2.db')
+    con = sqlite3.connect(database_path + 'model_interaction.db')
     form_data.to_sql(name='predictions', con=con, if_exists='append')
     con.close()
 
