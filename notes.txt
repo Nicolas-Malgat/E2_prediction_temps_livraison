@@ -1,7 +1,0 @@
-https://www.kaggle.com/olistbr/brazilian-ecommerce
-
-data temporal coverage: 2017-01-01 to 2018-06-01
-
-idee de modele
-
-predire le delai de livraison en fonction de l'activité, du produit, du jour et la localisation
